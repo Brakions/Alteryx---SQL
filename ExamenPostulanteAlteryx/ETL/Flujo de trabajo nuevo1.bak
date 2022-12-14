@@ -1,0 +1,349 @@
+<?xml version="1.0"?>
+<AlteryxDocument yxmdVer="2022.3">
+  <Nodes>
+    <Node ToolID="5">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+        <Position x="42" y="54" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Passwords />
+          <File OutputFileName="" FileFormat="19" SearchSubDirs="False" RecordLimit="">C:\Users\USER\Desktop\ExamenPostulanteAlteryx\Data\03_VentasEquipoVenta.yxdb</File>
+          <FormatSpecificOptions />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>03_VentasEquipoVenta.yxdb</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="VentaID" source="Formula: IF [_CurrentFieldName_] IN(&quot;DepartamentoVenta&quot;,&quot;ProvinciaVenta&quot;,&quot;DistritoVenta&quot;,&quot;Marca&quot;,&quot;Modelo&quot;,&quot;FuerzaVenta&quot;,&quot;Sexo&quot;,&quot;EstadoCivil&quot;,&quot;DireccionFiscal_Departamento&quot;,&quot;DireccionFiscal_Provincia&quot;,&quot;DireccionFiscal_Distrito&quot;,&quot;TipoPersona&quot;) THEN   &#xA;       IF IsNull([_CurrentField_]) THEN &#xA;	    IF ( [_CurrentFieldType_] IN ('Byte', 'Int16', 'Int32', 'Int64', 'Float', 'Double', 'FixedDecimal')) THEN&#xA;       	0&#xA;    	    ELSE [_CurrentField_]&#xA;	    ENDIF&#xA;	ELSE [_CurrentField_]&#xA;	ENDIF&#xA;    ELSE [_CurrentField_]&#xA;    ENDIF" type="Int32" />
+            <Field name="FechaVenta" source="File: aka:SAF_R131|||Select ctr.ContratoID As VentaID, ctr.ContratoFechaIngreso_Date As FechaVenta, ctr.DepartamentoPuntoExhibicion As DepartamentoVenta, ctr.ProvinciaPuntoExhibicion As ProvinciaVenta, ctr.DistritoPuntoExhibicion As DistritoVenta, ctr.MarcaIngresoVehiculo As Marca, ctr.ModeloIngresoVehiculo As Modelo, ctr.CertificadoValor As PrecioAuto, det.FuerzaVenta, aso.PersonaID As ClienteID, aso.Sexo, aso.EstadoCivil, aso.DireccionFiscal_Departamento, aso.DireccionFiscal_Provincia, aso.DireccionFiscal_Distrito, aso.PersonaFechaNacimiento, aso.TipoPersona, det.SituacionContratoOrigen From T_REP_FOC_Contrato ctr Inner Join T_REP_FOC_ContratoDetalle det On ctr.ContratoID = det.ContratoID Inner Join T_REP_FOC_Asociado aso On aso.ContratoID = ctr.ContratoID Where ctr.ContratoFechaIngreso_Date Between '01/01/2016' And '31/12/2018' And det.SituacionContratoOrigen = 'Ingreso de Venta'&#xA;  and ctr.TipoBienNombre='Automóviles, camionetas y camiones'" type="Date" />
+            <Field name="DepartamentoVenta" size="250" source="Formula: [_CurrentField_]" type="V_String" />
+            <Field name="ProvinciaVenta" size="250" source="Formula: [_CurrentField_]" type="V_String" />
+            <Field name="DistritoVenta" size="250" source="Formula: [_CurrentField_]" type="V_String" />
+            <Field name="EquipoVenta" size="20" source="TextInput:" type="V_String" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+    </Node>
+    <Node ToolID="7">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+        <Position x="54" y="174" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Passwords />
+          <File OutputFileName="" RecordLimit="" SearchSubDirs="False" FileFormat="8">C:\Users\USER\Desktop\ExamenPostulanteAlteryx\Data\02_VentasAutos.xls|||`Ventas$`</File>
+          <FormatSpecificOptions>
+            <FirstRowData>False</FirstRowData>
+            <NoProgress>False</NoProgress>
+          </FormatSpecificOptions>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>02_VentasAutos.xls
+Query=`Ventas$`</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="VentaID" source="File: C:\Users\USER\Desktop\ExamenPostulanteAlteryx\Data\02_VentasAutos.xls|||`Ventas$`" type="Double" />
+            <Field name="Marca" size="255" source="File: C:\Users\USER\Desktop\ExamenPostulanteAlteryx\Data\02_VentasAutos.xls|||`Ventas$`" type="V_WString" />
+            <Field name="Modelo" size="255" source="File: C:\Users\USER\Desktop\ExamenPostulanteAlteryx\Data\02_VentasAutos.xls|||`Ventas$`" type="V_WString" />
+            <Field name="PrecioAuto" source="File: C:\Users\USER\Desktop\ExamenPostulanteAlteryx\Data\02_VentasAutos.xls|||`Ventas$`" type="Double" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+    </Node>
+    <Node ToolID="8">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+        <Position x="42" y="306" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Passwords />
+          <File RecordLimit="" SearchSubDirs="False" FileFormat="0" OutputFileName="">C:\Users\USER\Desktop\ExamenPostulanteAlteryx\Data\01_Cliente.csv</File>
+          <FormatSpecificOptions>
+            <HeaderRow>True</HeaderRow>
+            <IgnoreErrors>False</IgnoreErrors>
+            <AllowShareWrite>False</AllowShareWrite>
+            <ImportLine>1</ImportLine>
+            <FieldLen>254</FieldLen>
+            <SingleThreadRead>False</SingleThreadRead>
+            <IgnoreQuotes>DoubleQuotes</IgnoreQuotes>
+            <Delimeter>,</Delimeter>
+            <QuoteRecordBreak>False</QuoteRecordBreak>
+            <CodePage>28591</CodePage>
+          </FormatSpecificOptions>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>01_Cliente.csv</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="ClienteID" size="254" source="File: C:\Users\USER\Desktop\ExamenPostulanteAlteryx\Data\01_Cliente.csv" type="V_String" />
+            <Field name="Sexo" size="254" source="File: C:\Users\USER\Desktop\ExamenPostulanteAlteryx\Data\01_Cliente.csv" type="V_String" />
+            <Field name="EstadoCivil" size="254" source="File: C:\Users\USER\Desktop\ExamenPostulanteAlteryx\Data\01_Cliente.csv" type="V_String" />
+            <Field name="DomicilioDepartamento" size="254" source="File: C:\Users\USER\Desktop\ExamenPostulanteAlteryx\Data\01_Cliente.csv" type="V_String" />
+            <Field name="DomicilioProvincia" size="254" source="File: C:\Users\USER\Desktop\ExamenPostulanteAlteryx\Data\01_Cliente.csv" type="V_String" />
+            <Field name="DomicilioDistrito" size="254" source="File: C:\Users\USER\Desktop\ExamenPostulanteAlteryx\Data\01_Cliente.csv" type="V_String" />
+            <Field name="FechaNacimiento" size="254" source="File: C:\Users\USER\Desktop\ExamenPostulanteAlteryx\Data\01_Cliente.csv" type="V_String" />
+            <Field name="TipoPersona" size="254" source="File: C:\Users\USER\Desktop\ExamenPostulanteAlteryx\Data\01_Cliente.csv" type="V_String" />
+            <Field name="VentaID" size="254" source="File: C:\Users\USER\Desktop\ExamenPostulanteAlteryx\Data\01_Cliente.csv" type="V_String" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+    </Node>
+    <Node ToolID="17">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.JoinMultiple.JoinMultiple">
+        <Position x="306" y="174" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <JoinByRecPos value="True" />
+          <OutputJoinOnly value="False" />
+          <SelectConfiguration>
+            <Configuration outputConnection="Output">
+              <OrderChanged value="False" />
+              <CommaDecimal value="False" />
+              <SelectFields>
+                <SelectField field="Input_#1_VentaID" selected="True" />
+                <SelectField field="Input_#1_Marca" selected="True" />
+                <SelectField field="Input_#1_Modelo" selected="True" />
+                <SelectField field="Input_#1_PrecioAuto" selected="True" />
+                <SelectField field="Input_#2_VentaID" selected="False" rename="Input_#2_VentaID" />
+                <SelectField field="Input_#2_FechaVenta" selected="True" />
+                <SelectField field="Input_#2_DepartamentoVenta" selected="True" />
+                <SelectField field="Input_#2_ProvinciaVenta" selected="True" />
+                <SelectField field="Input_#2_DistritoVenta" selected="True" />
+                <SelectField field="Input_#2_EquipoVenta" selected="True" />
+                <SelectField field="Input_#3_ClienteID" selected="True" />
+                <SelectField field="Input_#3_Sexo" selected="True" />
+                <SelectField field="Input_#3_DomicilioDepartamento" selected="True" />
+                <SelectField field="Input_#3_DomicilioProvincia" selected="True" />
+                <SelectField field="Input_#3_DomicilioDistrito" selected="True" />
+                <SelectField field="Input_#3_FechaNacimiento" selected="True" type="Date" size="10" />
+                <SelectField field="Input_#3_VentaID" selected="False" rename="Input_#3_VentaID" />
+                <SelectField field="*Unknown" selected="False" />
+              </SelectFields>
+            </Configuration>
+          </SelectConfiguration>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxJoinMultiple" />
+    </Node>
+    <Node ToolID="18">
+      <GuiSettings>
+        <Position x="390" y="174" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Value name="Check Box (135)">True</Value>
+          <Value name="Check Box (136)">True</Value>
+          <Value name="List Box (11)">"FechaVenta","DepartamentoVenta","ProvinciaVenta","DistritoVenta","EquipoVenta","VentaID","Marca","Modelo","PrecioAuto","ClienteID","Sexo","DomicilioDepartamento","DomicilioProvincia","DomicilioDistrito","FechaNacimiento"</Value>
+          <Value name="Check Box (84)">True</Value>
+          <Value name="Check Box (117)">True</Value>
+          <Value name="Check Box (15)">True</Value>
+          <Value name="Check Box (109)">False</Value>
+          <Value name="Check Box (122)">False</Value>
+          <Value name="Check Box (53)">False</Value>
+          <Value name="Check Box (58)">False</Value>
+          <Value name="Check Box (70)">False</Value>
+          <Value name="Check Box (77)">True</Value>
+          <Value name="Drop Down (81)">upper</Value>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
+      </Properties>
+      <EngineSettings Macro="Cleanse.yxmc" />
+    </Node>
+    <Node ToolID="29">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+        <Position x="534" y="174" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Expression>[FechaNacimiento] = "2022-12-14" AND
+[FechaNacimiento] &lt; "1922-12-14"</Expression>
+          <Mode>Custom</Mode>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>[FechaNacimiento] = "2022-12-14" AND
+[FechaNacimiento] &lt; "1922-12-14"</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+    </Node>
+    <Node ToolID="32">
+      <GuiSettings Plugin="AlteryxGuiToolkit.TextBox.TextBox">
+        <Position x="546" y="66" width="220" height="100" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Text>Corregir datos de Fecha de Nacimiento de los clientes: aquellos que tengan fecha
+de nacimiento mayor a la fecha actual o con edades mayor o igual a 100 años, se
+deberá reemplazar la fecha nacimiento o edad por la edad promedio o fecha de
+nacimiento promedio.</Text>
+          <Font name="Arial" size="8.25" style="0" />
+          <TextColor name="Black" />
+          <FillColor name="White" />
+          <Shape shape="0" />
+          <Justification Justification="4" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+    </Node>
+    <Node ToolID="33">
+      <GuiSettings>
+        <Position x="654" y="186" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Value name="listbox Select Incoming Fields">"VentaID","PrecioAuto"</Value>
+          <Value name="radio Null Value">True</Value>
+          <Value name="radio User Specified Replace From Value">False</Value>
+          <Value name="updown User Replace Value">0.00000</Value>
+          <Value name="radio Mean">True</Value>
+          <Value name="radio Median">False</Value>
+          <Value name="radio Mode">False</Value>
+          <Value name="radio User Specified Replace With Value">False</Value>
+          <Value name="updown User Replace With Value">0.00000</Value>
+          <Value name="checkbox Impute Indicator">False</Value>
+          <Value name="checkbox Imputed Values Separate Field">False</Value>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="FechaVenta" source="Formula: IF &#xA;REGEX_Match([_CurrentFieldName_], '.*(?:_Indicator)$', 0) &amp;&amp; IsNull([_CurrentField_]) THEN &#xA;  0 &#xA;ELSE &#xA;  [_CurrentField_] &#xA;ENDIF" type="Date" />
+            <Field name="DepartamentoVenta" size="250" source="Formula: IF &#xA;REGEX_Match([_CurrentFieldName_], '.*(?:_Indicator)$', 0) &amp;&amp; IsNull([_CurrentField_]) THEN &#xA;  0 &#xA;ELSE &#xA;  [_CurrentField_] &#xA;ENDIF" type="V_String" />
+            <Field name="ProvinciaVenta" size="250" source="Formula: IF &#xA;REGEX_Match([_CurrentFieldName_], '.*(?:_Indicator)$', 0) &amp;&amp; IsNull([_CurrentField_]) THEN &#xA;  0 &#xA;ELSE &#xA;  [_CurrentField_] &#xA;ENDIF" type="V_String" />
+            <Field name="DistritoVenta" size="250" source="Formula: IF &#xA;REGEX_Match([_CurrentFieldName_], '.*(?:_Indicator)$', 0) &amp;&amp; IsNull([_CurrentField_]) THEN &#xA;  0 &#xA;ELSE &#xA;  [_CurrentField_] &#xA;ENDIF" type="V_String" />
+            <Field name="EquipoVenta" size="20" source="Formula: IF &#xA;REGEX_Match([_CurrentFieldName_], '.*(?:_Indicator)$', 0) &amp;&amp; IsNull([_CurrentField_]) THEN &#xA;  0 &#xA;ELSE &#xA;  [_CurrentField_] &#xA;ENDIF" type="V_String" />
+            <Field name="VentaID" source="Formula: IF &#xA;REGEX_Match([_CurrentFieldName_], '.*(?:_Indicator)$', 0) &amp;&amp; IsNull([_CurrentField_]) THEN &#xA;  0 &#xA;ELSE &#xA;  [_CurrentField_] &#xA;ENDIF" type="Double" />
+            <Field name="Marca" size="255" source="Formula: IF &#xA;REGEX_Match([_CurrentFieldName_], '.*(?:_Indicator)$', 0) &amp;&amp; IsNull([_CurrentField_]) THEN &#xA;  0 &#xA;ELSE &#xA;  [_CurrentField_] &#xA;ENDIF" type="V_WString" />
+            <Field name="Modelo" size="255" source="Formula: IF &#xA;REGEX_Match([_CurrentFieldName_], '.*(?:_Indicator)$', 0) &amp;&amp; IsNull([_CurrentField_]) THEN &#xA;  0 &#xA;ELSE &#xA;  [_CurrentField_] &#xA;ENDIF" type="V_WString" />
+            <Field name="PrecioAuto" source="Formula: IF &#xA;REGEX_Match([_CurrentFieldName_], '.*(?:_Indicator)$', 0) &amp;&amp; IsNull([_CurrentField_]) THEN &#xA;  0 &#xA;ELSE &#xA;  [_CurrentField_] &#xA;ENDIF" type="Double" />
+            <Field name="ClienteID" size="254" source="Formula: IF &#xA;REGEX_Match([_CurrentFieldName_], '.*(?:_Indicator)$', 0) &amp;&amp; IsNull([_CurrentField_]) THEN &#xA;  0 &#xA;ELSE &#xA;  [_CurrentField_] &#xA;ENDIF" type="V_String" />
+            <Field name="Sexo" size="254" source="Formula: IF &#xA;REGEX_Match([_CurrentFieldName_], '.*(?:_Indicator)$', 0) &amp;&amp; IsNull([_CurrentField_]) THEN &#xA;  0 &#xA;ELSE &#xA;  [_CurrentField_] &#xA;ENDIF" type="V_String" />
+            <Field name="DomicilioDepartamento" size="254" source="Formula: IF &#xA;REGEX_Match([_CurrentFieldName_], '.*(?:_Indicator)$', 0) &amp;&amp; IsNull([_CurrentField_]) THEN &#xA;  0 &#xA;ELSE &#xA;  [_CurrentField_] &#xA;ENDIF" type="V_String" />
+            <Field name="DomicilioProvincia" size="254" source="Formula: IF &#xA;REGEX_Match([_CurrentFieldName_], '.*(?:_Indicator)$', 0) &amp;&amp; IsNull([_CurrentField_]) THEN &#xA;  0 &#xA;ELSE &#xA;  [_CurrentField_] &#xA;ENDIF" type="V_String" />
+            <Field name="DomicilioDistrito" size="254" source="Formula: IF &#xA;REGEX_Match([_CurrentFieldName_], '.*(?:_Indicator)$', 0) &amp;&amp; IsNull([_CurrentField_]) THEN &#xA;  0 &#xA;ELSE &#xA;  [_CurrentField_] &#xA;ENDIF" type="V_String" />
+            <Field name="FechaNacimiento" source="Formula: IF &#xA;REGEX_Match([_CurrentFieldName_], '.*(?:_Indicator)$', 0) &amp;&amp; IsNull([_CurrentField_]) THEN &#xA;  0 &#xA;ELSE &#xA;  [_CurrentField_] &#xA;ENDIF" type="Date" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings Macro="Imputation_v3.yxmc" />
+    </Node>
+  </Nodes>
+  <Connections>
+    <Connection name="#2">
+      <Origin ToolID="5" Connection="Output" />
+      <Destination ToolID="17" Connection="Input" />
+    </Connection>
+    <Connection name="#1">
+      <Origin ToolID="7" Connection="Output" />
+      <Destination ToolID="17" Connection="Input" />
+    </Connection>
+    <Connection name="#3">
+      <Origin ToolID="8" Connection="Output" />
+      <Destination ToolID="17" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="17" Connection="Output" />
+      <Destination ToolID="18" Connection="Input2" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="18" Connection="Output26" />
+      <Destination ToolID="29" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="29" Connection="False" />
+      <Destination ToolID="33" Connection="Input" />
+    </Connection>
+  </Connections>
+  <Properties>
+    <Memory default="True" />
+    <GlobalRecordLimit value="0" />
+    <TempFiles default="True" />
+    <Annotation on="True" includeToolName="False" />
+    <ConvErrorLimit value="10" />
+    <ConvErrorLimit_Stop value="False" />
+    <CancelOnError value="False" />
+    <DisableBrowse value="False" />
+    <EnablePerformanceProfiling value="False" />
+    <RunWithE2 value="True" />
+    <PredictiveToolsCodePage value="1252" />
+    <DisableAllOutput value="False" />
+    <ShowAllMacroMessages value="False" />
+    <ShowConnectionStatusIsOn value="True" />
+    <ShowConnectionStatusOnlyWhenRunning value="True" />
+    <ZoomLevel value="0" />
+    <LayoutType>Horizontal</LayoutType>
+    <MetaInfo>
+      <NameIsFileName value="True" />
+      <Name>Flujo de trabajo nuevo1</Name>
+      <Description />
+      <RootToolName />
+      <ToolVersion />
+      <ToolInDb value="False" />
+      <CategoryName />
+      <SearchTags />
+      <Author />
+      <Company />
+      <Copyright />
+      <DescriptionLink actual="" displayed="" />
+      <Example>
+        <Description />
+        <File />
+      </Example>
+      <WorkflowId value="f3937493-202f-4236-8aee-35ff68de630d" />
+      <Telemetry>
+        <PreviousWorkflowId value="72a7d007-7346-43e4-a9c7-54b48629bf01" />
+        <OriginWorkflowId value="72a7d007-7346-43e4-a9c7-54b48629bf01" />
+      </Telemetry>
+    </MetaInfo>
+    <Events>
+      <Enabled value="True" />
+    </Events>
+  </Properties>
+</AlteryxDocument>
